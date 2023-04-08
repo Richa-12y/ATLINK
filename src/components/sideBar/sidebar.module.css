@@ -1,0 +1,82 @@
+.left-sidebar {
+  width: 12%;
+  height: 88vh;
+  background-color: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar-button-container {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  padding: 8px 0px 8px 0px;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+
+  /* background-color: red; */
+  border-radius: 10px;
+  color: #bababa;
+  margin-bottom: 10px;
+}
+.button > span {
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button:hover {
+  background-color: #fff2f2;
+  color: #c11f29;
+}
+.active-button {
+  background-color: #fff2f2;
+  color: #c11f29;
+}
+.sidebar-footer {
+  width: 80%;
+  min-height: 5vh;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 20px;
+  padding: 10px;
+  color: #bababa;
+}
+.company-name {
+  display: flex;
+  flex-direction: row;
+}
+.button-for-sidebar {
+  background-color: black;
+  text-transform: capitalize;
+  color: white;
+  text-transform: capitalize;
+  border-radius: 5px;
+  outline: none;
+  padding: 4px 5px 4px 5px;
+  width: 80%;
+}
+.sidebar-footer strong {
+  color: black;
+}
+.sidebar-footer p {
+  text-align: center;
+  font-weight: 400;
+  color: #bababa;
+  font-size: 13px;
+}

@@ -1,0 +1,38 @@
+.about-desc {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* background-color: red; */
+}
+.about-company-verify {
+  display: flex;
+  align-items: center;
+  /* background-color: yellow; */
+  height: 100%;
+  text-align: center;
+}
+.company-name {
+  display: flex;
+}
+.company-name-text {
+  padding-left: 5px;
+  /* background-color: orange; */
+  display: flex;
+  align-items: flex-start;
+}
+.company-name-text-desc {
+  text-decoration: underline;
+  padding-left: 5px;
+  color: #a4c5ed;
+  cursor: pointer;
+}
+.desc-container-edit {
+  display: flex;
+  align-items: center;
+  color: #bababa;
+  padding-left: 25px;
+  font-weight: 400;
+}
+.edit-with-border {
+  border: 2px solid black;
+}

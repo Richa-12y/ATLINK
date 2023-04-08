@@ -1,0 +1,43 @@
+.card-container {
+  width: 300px;
+}
+.card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.card-header > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.emialForm {
+  display: flex;
+  position: relative;
+}
+.email-length {
+  position: absolute;
+  top: 50%;
+  right: 2%;
+  width: 30px;
+  height: 30px;
+  background-color: rgb(250, 181, 181);
+  color: red;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.infoContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.contact-card-container {
+  display: flex;
+  margin-top: 10px;
+  margin-left: -20px;
+}
+.social-icon {
+  display: flex;
+}

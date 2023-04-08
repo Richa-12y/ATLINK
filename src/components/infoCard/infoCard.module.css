@@ -1,0 +1,10 @@
+.card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.card-header > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
