@@ -14,6 +14,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
+import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 const Info = () => {
   const [emailist, setEmailList] = useState([
     "kricha00@gmail.com",
@@ -118,12 +119,34 @@ const Info = () => {
       ),
     },
   ];
+  const [open, setOpen] = React.useState(false);
+  const toggleDrawer = (value) => {
+    setOpen(value);
+  };
+  const getCardClickOpetion = (value) => {
+    console.log("hello");
+    setOpen(true);
+  };
   return (
     <div className="infoContainer">
+      <React.Fragment>
+        <SwipeableDrawer
+          anchor={"right"}
+          open={open}
+          onClose={() => toggleDrawer(false)}
+          onOpen={() => toggleDrawer(true)}
+        >
+          helllo
+        </SwipeableDrawer>
+      </React.Fragment>
       {cardDetails.map((el, index) => {
         return (
           <div className="card-container">
-            <InfoCard cardHeader={el.heading} cardHeaderIcon={el.icone}>
+            <InfoCard
+              cardHeader={el.heading}
+              cardHeaderIcon={el.icone}
+              onClick={() => getCardClickOpetion(el)}
+            >
               <Typography>{el.component}</Typography>
             </InfoCard>
           </div>

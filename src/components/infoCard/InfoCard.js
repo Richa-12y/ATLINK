@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import ModeIcon from "@mui/icons-material/Mode";
 //  <PermContactCalendarIcon />;
 import style from "./infoCard.module.css";
-const InfoCard = ({ cardHeader, cardHeaderIcon, children }) => {
+const InfoCard = ({ cardHeader, cardHeaderIcon, onClick, children }) => {
   return (
     <Card>
       <CardContent>
@@ -18,7 +18,7 @@ const InfoCard = ({ cardHeader, cardHeaderIcon, children }) => {
               <span>{cardHeader}</span>
             </div>
             <div>
-              <ModeIcon style={{ color: " #c11f29" }} />
+              <ModeIcon onClick={onClick} style={{ color: " #c11f29" }} />
             </div>
           </header>
         </Typography>
