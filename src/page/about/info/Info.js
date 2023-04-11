@@ -15,15 +15,49 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import CardFormDetails from "./CardFormDetails";
 const Info = () => {
-  const [emailist, setEmailList] = useState([
-    "kricha00@gmail.com",
-    "kricha111@gmail.com",
-    "kricha00@gmai1l.com",
-    "krich1a111@gmail.com",
-  ]);
+  const [companiesDetails, setCompaniesDetails] = useState(
+    JSON.parse(localStorage.getItem("company")) ?? []
+  );
 
-  const [contact, setContact] = useState(["124667", "2533788"]);
+  React.useEffect(() => {
+    setCompaniesDetails([
+      {
+        id: 1,
+        name: "sales Team",
+        email: [
+          "kricha00@gmail.com",
+          "kricha111@gmail.com",
+          "kricha00@gmail.com",
+          "kricha111@gmail.com",
+          "kricha00@gmail.com",
+          "kricha111@gmail.com",
+        ],
+        contact: ["124667", "2533788"],
+        address: [],
+      },
+      {
+        id: 2,
+        name: "marketing Team",
+        email: [
+          "kricha00@gmail.com",
+          "kricha111@gmail.com",
+          "kricha00@gmail.com",
+          "kricha111@gmail.com",
+          "kricha00@gmail.com",
+          "kricha111@gmail.com",
+        ],
+        contact: ["124667", "2533788"],
+        address: [],
+      },
+    ]);
+    localStorage.setItem("company", JSON.stringify(companiesDetails));
+  }, []);
+
+  const [cardDetailsList, setCardDetailsList] = useState("");
+
   const [address, setAddress] = useState({
     floorNumber: "C-1/135",
     area: "GIDC ",
@@ -36,6 +70,7 @@ const Info = () => {
     {
       heading: "Contact",
       icone: <PermContactCalendarIcon />,
+      type: "contact",
 
       component: (
         <div className="emialForm">
@@ -44,7 +79,10 @@ const Info = () => {
           </div>
           <div>
             <div>
-              {[emailist[0], emailist[1]].map((el, i) => {
+              {[
+                companiesDetails[0]?.email[0],
+                companiesDetails[0]?.email[1],
+              ].map((el, i) => {
                 return (
                   <>
                     <div>
@@ -60,7 +98,10 @@ const Info = () => {
               <div>
                 <LocalPhoneIcon />
               </div>
-              {[contact[0], contact[1]].map((el, index) => {
+              {[
+                companiesDetails[0]?.contact[0],
+                companiesDetails[0]?.contact[1],
+              ].map((el, index) => {
                 return (
                   <span>
                     {el}
@@ -70,7 +111,7 @@ const Info = () => {
               })}
             </div>
           </div>
-          <div className="email-length">+{emailist.length - 2}</div>
+          <div className="email-length">+{companiesDetails.length - 1}</div>
         </div>
       ),
     },
@@ -78,39 +119,55 @@ const Info = () => {
     {
       heading: "Address",
       icone: <EditLocationIcon />,
+      type: "address",
       component: (
         <div className="address-conatiner">
-          <span>{address.floorNumber},</span>
-          <span>{address.area},</span>
-          <span>{address.landmark},</span>
+          <span>{address?.floorNumber},</span>
+          <span>{address?.area},</span>
+          <span>{address?.landmark},</span>
           <br />
-          <span>{address.Town},</span>
-          <span>{address.pincode},</span>
+          <span>{address?.Town},</span>
+          <span>{address?.pincode},</span>
 
-          <span>{address.City}</span>
+          <span>{address?.City}</span>
         </div>
       ),
     },
     {
       heading: "Houre of operation",
       icone: <BusinessCenterIcon />,
+      type: "houre of operation",
       component: <>Monday To Friday -9:00AM To 6:00PM</>,
     },
     {
       heading: "Social Media",
       icone: <ShareIcon />,
+      type: "social media",
       component: (
         <div className="social-icon">
-          <LanguageIcon />
-          <TwitterIcon />
-          <InstagramIcon />
-          <FacebookIcon />
+          <div>
+            <LanguageIcon />
+            <p> website</p>
+          </div>
+          <div>
+            <InstagramIcon />
+            <p>Instagram</p>
+          </div>
+          <div>
+            <FacebookIcon />
+            <p>Facebook</p>
+          </div>
+          <div>
+            <TwitterIcon />
+            <p>Twitter</p>
+          </div>
         </div>
       ),
     },
     {
       heading: "Statement",
       icone: <FormatQuoteIcon />,
+      type: "statement",
       component: (
         <div className="emialForm">
           <div>You think we ink it</div>
@@ -125,7 +182,28 @@ const Info = () => {
   };
   const getCardClickOpetion = (value) => {
     console.log("hello");
+    setCardDetailsList(value);
     setOpen(true);
+  };
+  const getFromBasedOnType = () => {
+    switch (cardDetailsList.type) {
+      case "contact":
+        return (
+          <CardFormDetails
+            companiesDetails={companiesDetails}
+            setCompaniesDetails={setCompaniesDetails}
+          />
+        );
+      case "address":
+        return <h1>Hello address</h1>;
+      case "houre of operation":
+        return <h1>Hello houre of operation</h1>;
+      case "social media":
+        return <h1>Hello social media</h1>;
+
+      default:
+        return <h1>statement</h1>;
+    }
   };
   return (
     <div className="infoContainer">
@@ -136,18 +214,24 @@ const Info = () => {
           onClose={() => toggleDrawer(false)}
           onOpen={() => toggleDrawer(true)}
         >
-          helllo
+          <div className="drawer-conatiner">
+            <KeyboardBackspaceIcon />
+            <div>
+              <h3>{cardDetailsList?.heading}</h3>
+            </div>
+          </div>
+          {getFromBasedOnType()}
         </SwipeableDrawer>
       </React.Fragment>
       {cardDetails.map((el, index) => {
         return (
           <div className="card-container">
             <InfoCard
-              cardHeader={el.heading}
-              cardHeaderIcon={el.icone}
+              cardHeader={el?.heading}
+              cardHeaderIcon={el?.icone}
               onClick={() => getCardClickOpetion(el)}
             >
-              <Typography>{el.component}</Typography>
+              <Typography>{el?.component}</Typography>
             </InfoCard>
           </div>
         );
