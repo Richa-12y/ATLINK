@@ -9,23 +9,25 @@ import ModeIcon from "@mui/icons-material/Mode";
 import style from "./infoCard.module.css";
 const InfoCard = ({ cardHeader, cardHeaderIcon, onClick, children }) => {
   return (
-    <Card>
-      <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          <header className={style["card-header"]}>
-            <div>
-              {cardHeaderIcon}
-              <span>{cardHeader}</span>
-            </div>
-            <div>
-              <ModeIcon onClick={onClick} style={{ color: " #c11f29" }} />
-            </div>
-          </header>
-        </Typography>
-        {children}
-      </CardContent>
-      <CardActions></CardActions>
-    </Card>
+    <div className={style["info-card-container"]}>
+      <Card>
+        <CardContent>
+          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            <header className={style["card-header"]}>
+              <div>
+                {cardHeaderIcon}
+                <span>{cardHeader}</span>
+              </div>
+              <div>
+                <ModeIcon onClick={onClick} style={{ color: " #c11f29" }} />
+              </div>
+            </header>
+          </Typography>
+          {children}
+        </CardContent>
+        <CardActions></CardActions>
+      </Card>
+    </div>
   );
 };
 

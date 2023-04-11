@@ -8,3 +8,6 @@
   align-items: center;
   justify-content: center;
 }
+.info-card-container {
+  margin-bottom: 5px;
+}
